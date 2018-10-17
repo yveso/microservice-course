@@ -24,3 +24,4 @@ users_dev=# \dt
 
 users_dev=# \q
 ```
+* Seed DB: `docker-compose -f docker-compose-dev.yml run users python manage.py seed-db`
