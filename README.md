@@ -25,3 +25,17 @@ users_dev=# \dt
 users_dev=# \q
 ```
 * Seed DB: `docker-compose -f docker-compose-dev.yml run users python manage.py seed-db`
+
+### Deployment
+
+* `docker-machine create --driver digitalocean --digitalocean-access-token=??? microservice-tut`
+* `docker-machine env microservice-tut`
+* `eval $(docker-machine env microservice-tut)` respectively `@FOR /f "tokens=*" %i IN ('docker-machine env microservice-tut') DO @%i`
+* `docker-machine ls`
+* `docker-compose -f docker-compose-prod.yml up -d --build`
+* `docker-compose -f docker-compose-prod.yml run users python manage.py recreate-db`
+* `docker-compose -f docker-compose-prod.yml run users python manage.py seed-db`
+* `docker-compose -f docker-compose-prod.yml run users python manage.py test`
+* `docker-machine ip microservice-tut`
+* `docker-compose -f docker-compose-prod.yml run users env`
+* `docker-compose -f docker-compose-prod.yml up -d`
