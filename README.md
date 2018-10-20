@@ -39,3 +39,6 @@ users_dev=# \q
 * `docker-machine ip microservice-tut`
 * `docker-compose -f docker-compose-prod.yml run users env`
 * `docker-compose -f docker-compose-prod.yml up -d`
+* `docker-compose -f docker-compose-prod.yml up -d --build nginx`
+* Unset (back to local) `docker-machine env -u'`
+* `docker-compose -f docker-compose-dev.yml up -d --build nginx`
