@@ -11,7 +11,7 @@ Following the [Microservices with Docker, Flask, and React Course](https://testd
 * Run Tests: `docker-compose -f docker-compose-dev.yml run users python manage.py test`
 * Start Shell: `docker-compose -f docker-compose-dev.yml run users flask shell`
 * Recreate DB: `docker-compose -f docker-compose-dev.yml run users python manage.py recreate-db`
-* Run Postgres `docker-compose -f docker-compose-dev.yml exec users-db psql -U postgres`
+* Run Postgres: `docker-compose -f docker-compose-dev.yml exec users-db psql -U postgres`
 ```
 postgres=# \c users_dev
 You are now connected to database "users_dev" as user "postgres".
@@ -40,5 +40,5 @@ users_dev=# \q
 * `docker-compose -f docker-compose-prod.yml run users env`
 * `docker-compose -f docker-compose-prod.yml up -d`
 * `docker-compose -f docker-compose-prod.yml up -d --build nginx`
-* Unset (back to local) `docker-machine env -u'`
+* Unset (back to local) `docker-machine env -u`
 * `docker-compose -f docker-compose-dev.yml up -d --build nginx`
