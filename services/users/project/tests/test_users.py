@@ -120,14 +120,40 @@ class TestUserService(BaseTestCase):
             self.assertEqual(response.status_code, 200)
             self.assertEqual(len(data["data"]["users"]), 2)
             self.assertIn("yves", data["data"]["users"][0]["username"])
-            self.assertIn(
-                "yves@yves.com", data["data"]["users"][0]["email"]
-            )
+            self.assertIn("yves@yves.com", data["data"]["users"][0]["email"])
             self.assertIn("yves2", data["data"]["users"][1]["username"])
-            self.assertIn(
-                "yves2@yves.com", data["data"]["users"][1]["email"]
-            )
+            self.assertIn("yves2@yves.com", data["data"]["users"][1]["email"])
             self.assertIn("success", data["status"])
+
+    def test_index_no_users(self):
+        with self.client:
+            response = self.client.get("/")
+            self.assertEqual(response.status_code, 200)
+            self.assertIn(b"All Users", response.data)
+            self.assertIn(b"No users", response.data)
+
+    def test_index_with_users(self):
+        add_user(username="max", email="max@m.com")
+        add_user(username="moritz", email="moritz@m.com")
+        with self.client:
+            response = self.client.get("/")
+            self.assertEqual(response.status_code, 200)
+            self.assertIn(b"All Users", response.data)
+            self.assertNotIn(b"No users", response.data)
+            self.assertIn(b"max", response.data)
+            self.assertIn(b"moritz", response.data)
+
+    def test_index_add_users(self):
+        with self.client:
+            response = self.client.post(
+                "/",
+                data=dict(username="susi", email="susi@susi.com"),
+                follow_redirects=True,
+            )
+            self.assertEqual(response.status_code, 200)
+            self.assertIn(b"All Users", response.data)
+            self.assertNotIn(b"No users", response.data)
+            self.assertIn(b"susi", response.data)
 
 
 if __name__ == "__main__":
