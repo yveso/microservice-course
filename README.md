@@ -30,7 +30,9 @@ users_dev=# \q
 
 * `docker-machine create --driver digitalocean --digitalocean-access-token=??? microservice-tut`
 * `docker-machine env microservice-tut`
-* `eval $(docker-machine env microservice-tut)` respectively `@FOR /f "tokens=*" %i IN ('docker-machine env microservice-tut') DO @%i`
+    * bash: `eval $(docker-machine env microservice-tut)`
+    * cmd: `@FOR /f "tokens=*" %i IN ('docker-machine env microservice-tut') DO @%i`
+    * PowerShell: `docker-machine.exe" env microservice-tut | Invoke-Expression`
 * `docker-machine ls`
 * `docker-compose -f docker-compose-prod.yml up -d --build`
 * `docker-compose -f docker-compose-prod.yml run users python manage.py recreate-db`
