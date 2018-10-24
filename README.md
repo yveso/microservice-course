@@ -25,6 +25,8 @@ users_dev=# \dt
 users_dev=# \q
 ```
 * Seed DB: `docker-compose -f docker-compose-dev.yml run users python manage.py seed-db`
+* Run Tests with coverage: `docker-compose -f docker-compose-dev.yml run users python manage.py cov`
+* Run flake8: `docker-compose -f docker-compose-dev.yml run users flake8 project`
 
 ### Deployment
 
