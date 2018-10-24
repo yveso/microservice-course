@@ -1,5 +1,7 @@
 # microservices-course
 
+[![Build Status](https://travis-ci.com/yveso/microservice-course.svg?branch=master)](https://travis-ci.com/yveso/microservice-course)
+
 Following the [Microservices with Docker, Flask, and React Course](https://testdriven.io/).
 
 ## Chapter 1
