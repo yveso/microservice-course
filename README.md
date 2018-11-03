@@ -36,7 +36,7 @@ users_dev=# \q
 * `docker-machine env microservice-tut`
     * bash: `eval $(docker-machine env microservice-tut)`
     * cmd: `@FOR /f "tokens=*" %i IN ('docker-machine env microservice-tut') DO @%i`
-    * PowerShell: `docker-machine.exe" env microservice-tut | Invoke-Expression`
+    * PowerShell: `docker-machine.exe env microservice-tut | Invoke-Expression`
 * `docker-machine ls`
 * `docker-compose -f docker-compose-prod.yml up -d --build`
 * `docker-compose -f docker-compose-prod.yml run users python manage.py recreate-db`
